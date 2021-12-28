@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "fofr",
+  "version": "${version}",
+  "name": "Forge of Fiends (Redux)",
+  "description": "",
+  "authors": [
+    "PhoenixVX",
+    "wolverbyte"
+  ],
+  "license": "Insert License Here",
+  "icon": "assets/fofr/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "me.zero.fofr.fabric.FOFRFabric"
+    ],
+    "client": [
+      "me.zero.fofr.fabric.client.FOFRFabricClient"
+    ]
+  },
+  "mixins": [
+    "fofr-common.mixins.json",
+    "fofr-fabric.mixins.json"
+  ],
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.18",
+    "architectury": ">=3.2.57"
+  }
+}
