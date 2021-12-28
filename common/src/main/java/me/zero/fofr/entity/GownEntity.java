@@ -72,11 +72,9 @@ public class GownEntity extends HostileEntity implements IAnimatable {
     // AI
     private static class GownMoveControl extends MoveControl {
         private float targetYaw;
-        private final GownEntity gown;
 
         public GownMoveControl(GownEntity gownEntity) {
             super(gownEntity);
-            this.gown = gownEntity;
             this.targetYaw = 180.0F * gownEntity.getYaw() / 3.1415927F;
         }
 
@@ -98,12 +96,9 @@ public class GownEntity extends HostileEntity implements IAnimatable {
             } else {
                 this.state = State.WAIT;
                 if (this.entity.isOnGround()) {
-                    this.entity.setMovementSpeed((float)(this.speed * this.entity.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)));
-                    this.gown.sidewaysSpeed = 0.0F;
-                    this.gown.forwardSpeed = 0.0F;
-                    this.entity.setMovementSpeed(0.0F);
+                    this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)));
                 } else {
-                    this.entity.setMovementSpeed((float)(this.speed * this.entity.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)));
+                    this.entity.setMovementSpeed((float) (this.speed * this.entity.getAttributeValue(EntityAttributes.GENERIC_MOVEMENT_SPEED)));
                 }
 
             }
@@ -128,10 +123,6 @@ public class GownEntity extends HostileEntity implements IAnimatable {
         }
 
         public void tick() {
-            if (this.gown.getRandom().nextFloat() < 0.8F) {
-                this.gown.getJumpControl().setActive();
-            }
-
             ((GownEntity.GownMoveControl)this.gown.getMoveControl()).move(1.2D);
         }
     }
@@ -180,7 +171,7 @@ public class GownEntity extends HostileEntity implements IAnimatable {
                 this.gown.lookAtEntity(livingEntity, 10.0F, 10.0F);
             }
 
-            ((GownEntity.GownMoveControl)this.gown.getMoveControl()).look(this.gown.getYaw());
+            ((GownEntity.GownMoveControl) this.gown.getMoveControl()).look(this.gown.getYaw());
         }
     }
 
@@ -204,7 +195,7 @@ public class GownEntity extends HostileEntity implements IAnimatable {
                 this.targetYaw = (float)this.gown.getRandom().nextInt(360);
             }
 
-            ((GownEntity.GownMoveControl)this.gown.getMoveControl()).look(this.targetYaw);
+            ((GownEntity.GownMoveControl) this.gown.getMoveControl()).look(this.targetYaw);
         }
     }
 
@@ -221,7 +212,7 @@ public class GownEntity extends HostileEntity implements IAnimatable {
         }
 
         public void tick() {
-            ((GownEntity.GownMoveControl)this.gown.getMoveControl()).move(1.0D);
+            ((GownEntity.GownMoveControl) this.gown.getMoveControl()).move(1.0D);
         }
     }
 }
